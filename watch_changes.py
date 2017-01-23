@@ -5,14 +5,14 @@ from watchdog.events import FileSystemEventHandler
 
 
 class Watcher:
-    DIRECTORY_TO_WATCH = "articles"
+    DIRECTORYTOWATCH = "articles"
 
     def __init__(self):
         self.observer = Observer()
 
     def run(self):
         event_handler = Handler()
-        self.observer.schedule(event_handler, self.DIRECTORY_TO_WATCH, recursive=True)
+        self.observer.schedule(event_handler, self.DIRECTORYTOWATCH, recursive=True)
         self.observer.start()
         try:
             while True:
