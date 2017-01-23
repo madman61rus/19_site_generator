@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Энциклопедия DevMan </title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Развернуть навигацию</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Энциклопедия DevMan</a>
+        </div>
+
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div class="container">
+    {% for section in topics %}
+    <div class="row">
+        {% for topic in section %}
+                <div class="col-md-4">
+                    <h4>{{ topic['title'] }}</h4>
+                    <ul class="content">
+                    {% for article in articles %}
+                        {% if article['topic'] == topic['slug'] %}
+
+                            <li><a href="{{ article['source'].replace('.md','.html').replace('&amp;','_').replace(' ','') }}">{{ article['title'] }}</a></li>
+
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                </div>
+
+        {% endfor %}
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+    <script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/ie-emulation-modes-warning.js"></script>
+
+</body>
+</html>
