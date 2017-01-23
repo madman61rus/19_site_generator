@@ -3,16 +3,17 @@ import subprocess
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
+DIRECTORYTOWATCH = "articles"
 
 class Watcher:
-    DIRECTORYTOWATCH = "articles"
+
 
     def __init__(self):
         self.observer = Observer()
 
     def run(self):
         event_handler = Handler()
-        self.observer.schedule(event_handler, self.DIRECTORYTOWATCH, recursive=True)
+        self.observer.schedule(event_handler, DIRECTORYTOWATCH, recursive=True)
         self.observer.start()
         try:
             while True:
